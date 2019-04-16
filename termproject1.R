@@ -69,7 +69,10 @@ library(emmeans)
 est.means <- emmeans(model2, specs = "SOA")
 tukey.results <- contrast(est.means, method = "tukey")
 tukey.results
-
+means.soa <- no.outliers %>%
+    group_by(., SOA) %>%
+    summarize(rt = mean(targetSquare.RT), sd = sd(targetSquare.RT))
+means.soa
 
 ##資料視覺化
 library(ggplot2)
